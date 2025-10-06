@@ -1,129 +1,59 @@
-import { useState } from "react";
-import { ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { FlatList, Text, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import styles from "../constants/GlobalStyles";
 
-function App() {
-  const [name, setName] = useState("");
-  const [desc, setDesc] = useState("");
-  const [lang, setLang] = useState("");
-  const [pack, setPack] = useState("");
-  const [plans, setPlans] = useState("");
-  const [installationGuide, setInstallationGuide] = useState("");
+let colorScheme = ['#E7F2EF', '#A1C2BD', '#708993', '#19183B'];
 
-  const addField = () => {
+const Items = [
+  { id: 1, name: 'Activity Indicator' },
+  { id: 2, name: 'Alert' },
+  { id: 3, name: 'Button' },
+  { id: 4, name: 'FlatList' },
+  { id: 5, name: 'Image' },
+  { id: 6, name: 'ImageBackground' },
+  { id: 7, name: 'KeyboardAvoidingView' },
+  { id: 8, name: 'Modal' },
+  { id: 9, name: 'ScrollView' },
+  { id: 10, name: 'Switch' },
+  { id: 11, name: 'Text'},
+  { id: 12, name: 'TextInput' },
+  { id: 13, name: 'TouchableHighlight' },
+  { id: 14, name: 'TouchableOpacity' },
+  { id: 15, name: 'TouchableWithoutFeedback' },
+];
+
+
+const LearnApp = () => {
+  const navigation = useNavigation();
+  const onPressCard = (itemName) => {
+    if (itemName === 'Alert') {
+      navigation.navigate('Alert');
+    } 
+    else {
+      alert(`You pressed ${itemName} card`);
+    }
+  }
+
+  const FlatListCard = ({item}) => {
     return (
-      <View styles={{borderTopWidth: 1, borderColor: 'black', width: '100%'}}>
-      <TextInput 
-          multiline={true}
-          placeholder="" 
-          value={desc}
-          onChangeText={setDesc} 
-          style={styles.input}/>
-      </View>
+      <TouchableOpacity style={styles.card} onPress={() => onPressCard(item.name)}>
+        <Text style={{ fontSize: 20, marginVertical: 10, color: colorScheme[0], fontWeight:'500' }}>{item.name}</Text>
+      </TouchableOpacity>
     )
   }
 
-  const submitBtn = () => {
-    alert(name);
-  }
   return (
-    <ScrollView>
-      <SafeAreaView style={styles.container}>
-        <Text style={styles.text}>GitHub README Creator</Text>
-        <TextInput 
-          maxLength={30}
-          placeholder="Project Title" 
-          value={name} 
-          onChangeText={setName} 
-          style={styles.input}/>
-        <TextInput 
-          multiline={true}
-          placeholder="Project Description" 
-          value={desc}
-          onChangeText={setDesc} 
-          style={styles.input}/>
-        <TextInput 
-          placeholder="Languages Used (e.g : Python, CSS, JS)" 
-          value={lang}
-          onChangeText={setLang} 
-          style={styles.input}/>
-        <TextInput 
-          multiline={true}
-          placeholder="Packages Used :
-          (e.g : Angular, seperate with RETURN for languages and commas for multiple packages in one language)" 
-          value={pack}
-          onChangeText={setPack} 
-          style={styles.input}/>
-        <TextInput 
-          multiline={true}
-          numberOfLines={5}
-          placeholder="Future Plans" 
-          value={plans}
-          onChangeText={setPlans} 
-          style={styles.input}/>
-        <TextInput 
-          multiline={true}
-          placeholder="Installation Guide" 
-          value={installationGuide}
-          onChangeText={setInstallationGuide} 
-          style={styles.input}/>
-        <View style={{width: '100%', alignItems: 'center', marginTop: 10}}>
-          <TouchableOpacity 
-            style={styles.button} 
-            onPress={submitBtn}>
-            <Text 
-              style={styles.buttonText}>
-              Save & Confirm
-            </Text>
-          </TouchableOpacity>
-          <TouchableOpacity 
-            style={[styles.button, {backgroundColor:"grey"}]} 
-            disabled={true}>
-            <Text 
-              style={styles.buttonText}>
-              Add Field (Coming Soon!)
-            </Text>
-          </TouchableOpacity>
-        </View>
-      </SafeAreaView>
-    </ScrollView>
+    <SafeAreaView style={styles.container}>
+      <Text style={styles.text}>Learn React Native</Text>
+      <FlatList
+        data={Items}
+        keyExtractor={(item) => item.id.toString()}
+        renderItem={FlatListCard}
+        style={{ marginTop: 20 }}
+      />
+    </SafeAreaView>
   );
 }
-export default App;
 
-const styles = StyleSheet.create({
-  container: {
-    gap: 10,
-    padding: 20,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  button: {
-    marginTop: 10,
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    borderRadius: 5,
-    backgroundColor : 'black',
-    width: '80%',
-  },
-  buttonText: {
-    color: 'white',
-    fontSize: 18,
-    fontWeight: 'bold',
-    textAlign: 'center'
-  },
-  text: {
-    fontSize: 25,
-    fontWeight: 'bold'
-  },
-  input: {
-    fontSize: 18,
-    borderWidth: 1,
-    borderBottomWidth: 1,
-    width: '100%',
-    marginTop: 15,
-    paddingHorizontal: 5,
-    borderRadius: 5
-  }
-});
+export default LearnApp;
