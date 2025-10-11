@@ -17,15 +17,15 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   button: {
-    marginTop: 10,
+    marginTop: 20,
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderRadius: 5,
-    backgroundColor: "black",
+    backgroundColor: colorScheme[3],
     width: "80%",
   },
   buttonText: {
-    color: "white",
+    color: colorScheme[1],
     fontSize: 18,
     fontWeight: "bold",
     textAlign: "center",
@@ -34,6 +34,17 @@ const styles = StyleSheet.create({
     fontSize: 35,
     fontWeight: "bold",
     color: colorScheme[2],
+  },
+  exampleTextHeading: {
+    fontSize: 35,
+    color: colorScheme[2],
+    fontStyle: "italic",
+  },
+  exampleText: {
+    marginTop: 10,
+    fontSize: 20,
+    color: colorScheme[2],
+    fontStyle: "italic",
   },
   input: {
     fontSize: 18,
@@ -44,6 +55,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 5,
     borderRadius: 5,
   },
+  tabContainer: {
+    paddingTop: 30,
+  }
 });
 
 export default styles;
