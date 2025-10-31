@@ -57,6 +57,14 @@ const styles = StyleSheet.create({
   },
   tabContainer: {
     paddingTop: 30,
+  },
+  codeBlock : {
+    fontSize: 13,
+    width: '98%',
+    backgroundColor: colorScheme[3],
+    color: colorScheme[1],
+    fontFamily: 'monospace',
+    padding: 15
   }
 });
 
