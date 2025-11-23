@@ -1,7 +1,10 @@
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { Text } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { AlertOption, AlertOptionSyntax } from "../../components/Alert";
+import { AlertOption, AlertOptionSyntax } from "../../components/showAlert";
+import { ButtonOption, ButtonOptionSyntax } from "../../components/showButton";
+import { ImageOption, ImageOptionSyntax } from "../../components/showImage";
+import { SwitchOption, SwitchOptionSyntax } from "../../components/showSwitch";
 import styles from "../../constants/GlobalStyles";
 
 const Tab = createMaterialTopTabNavigator();
@@ -10,6 +13,27 @@ function ExampleScreen({name}) {
     return (
       <SafeAreaView style={[styles.container, {paddingTop: 0}]}> 
         <AlertOption/>
+      </SafeAreaView>
+    )
+  }
+  else if (name==="Button") {
+    return (
+      <SafeAreaView style={[styles.container, {paddingTop: 0}]}> 
+        <ButtonOption/>
+      </SafeAreaView>
+    )
+  }
+  else if (name==="Switch") {
+    return (
+      <SafeAreaView style={[styles.container, {paddingTop: 0}]}> 
+        <SwitchOption/>
+      </SafeAreaView>
+    )
+  }
+  else if (name==="Image") {
+    return (
+      <SafeAreaView style={[styles.container, {paddingTop: 0}]}> 
+        <ImageOption/>
       </SafeAreaView>
     )
   }
@@ -30,9 +54,30 @@ function SourceCodeScreen({name}) {
       </SafeAreaView>
     )
   }
+  else if (name==="Button") {
+    return (
+      <SafeAreaView style={[styles.container, {paddingTop: 0}]}> 
+        <ButtonOptionSyntax/>
+      </SafeAreaView>
+    )
+  }
+  else if (name==="Switch") {
+    return (
+      <SafeAreaView style={[styles.container, {paddingTop: 0}]}> 
+        <SwitchOptionSyntax/>
+      </SafeAreaView>
+    )
+  }
+  else if (name==="Image") {
+    return (
+      <SafeAreaView style={[styles.container, {paddingTop: 0}]}> 
+        <ImageOptionSyntax/>
+      </SafeAreaView>
+    )
+  }
   else {
     return (
-      <SafeAreaView style={styles.container}> 
+      <SafeAreaView style={[styles.container]}> 
           <Text style={styles.exampleText}>Source Code</Text>
       </SafeAreaView>
     );

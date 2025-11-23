@@ -40,7 +40,7 @@ export default App = () => {
   return (
     <View>
       <TouchableOpacity onPress={showAlert}>
-        <Text style={styles.buttonText}>This is an Alert Button</Text>
+        <Text> This is an Alert Button</Text>
       </TouchableOpacity>
     </View>
   )
