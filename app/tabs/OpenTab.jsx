@@ -2,6 +2,10 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 import { Text } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { AlertOption, AlertOptionSyntax } from "../../components/Alert";
+import { TouchableWithoutFeedbackOption, TouchableWithoutFeedbackOptionSyntax } from "../../components/Feedback";
+import { TouchableHighlightOption, TouchableHighlightOptionSyntax } from "../../components/Highlight";
+import { TextInputOption, TextInputOptionSyntax } from '../../components/Input';
+import { TouchableOpacityOption, TouchableOpacityOptionSyntax } from "../../components/Opacity";
 import styles from "../../constants/GlobalStyles";
 
 const Tab = createMaterialTopTabNavigator();
@@ -10,6 +14,34 @@ function ExampleScreen({name}) {
     return (
       <SafeAreaView style={[styles.container, {paddingTop: 0}]}> 
         <AlertOption/>
+      </SafeAreaView>
+    )
+  }
+  else if (name==="TouchableOpacity") {
+    return (
+      <SafeAreaView style={[styles.container, {paddingTop: 0}]}>
+        <TouchableOpacityOption/>
+      </SafeAreaView>
+    )
+  }
+  else if (name==="TouchableHighlight") {
+    return (
+      <SafeAreaView style={[styles.container, {paddingTop: 0}]}>
+        <TouchableHighlightOption/>
+      </SafeAreaView>
+    )
+  }
+  else if (name==="TouchableWithoutFeedback") {
+    return (
+      <SafeAreaView style={[styles.container, {paddingTop: 0}]}>
+        <TouchableWithoutFeedbackOption/>
+      </SafeAreaView>
+    )
+  }
+  else if (name==="TextInput") {
+    return (
+      <SafeAreaView style={[styles.container, {paddingTop: 0}]}>
+        <TextInputOption/>
       </SafeAreaView>
     )
   }
@@ -27,6 +59,34 @@ function SourceCodeScreen({name}) {
     return (
       <SafeAreaView style={[styles.container, {paddingTop: 0}]}> 
         <AlertOptionSyntax/>
+      </SafeAreaView>
+    )
+  }
+  else if (name==="TouchableOpacity") {
+    return (
+      <SafeAreaView style={[styles.container, {paddingTop: 0}]}>
+        <TouchableOpacityOptionSyntax/>
+      </SafeAreaView>
+    )
+  }
+  else if (name==="TouchableHighlight") {
+    return (
+      <SafeAreaView style={[styles.container, {paddingTop: 0}]}>
+        <TouchableHighlightOptionSyntax/>
+      </SafeAreaView>
+    )
+  }
+  else if (name==="TouchableWithoutFeedback") {
+    return (
+      <SafeAreaView style={[styles.container, {paddingTop: 0}]}>
+        <TouchableWithoutFeedbackOptionSyntax/>
+      </SafeAreaView>
+    )
+  }
+  else if (name==="TextInput") {
+    return (
+      <SafeAreaView style={[styles.container, {paddingTop: 0}]}>
+        <TextInputOptionSyntax/>
       </SafeAreaView>
     )
   }
