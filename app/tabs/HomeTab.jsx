@@ -5,7 +5,7 @@ import styles from "../../constants/GlobalStyles";
 let colorScheme = ['#E7F2EF', '#A1C2BD', '#708993', '#19183B'];
 
 const Items = [
-  { id: 1, name: 'Activity Indicator' },
+  { id: 1, name: 'ActivityIndicator' },
   { id: 2, name: 'Alert' },
   { id: 3, name: 'Button' },
   { id: 4, name: 'FlatList' },
