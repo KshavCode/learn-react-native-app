@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import {
   KeyboardAvoidingView,
   Platform,
@@ -15,97 +15,78 @@ export const KeyboardAvoidingViewOption = () => {
 
   return (
     <KeyboardAvoidingView
+      style={{ flex: 1, backgroundColor: '#F8FAFC' }}
       behavior={Platform.OS === "ios" ? "padding" : "height"}
+      keyboardVerticalOffset={Platform.OS === "ios" ? 100 : 0}
     >
       <View style={{ flex: 1, padding: 20 }}>
+        <View style={{ marginBottom: 15 }}>
+          <Text style={{ color: '#1E293B', fontSize: 18, fontWeight: '700' }}>
+            Keyboard Interaction
+          </Text>
+          <Text style={{ color: '#64748B', fontSize: 14 }}>
+            Focus the input below to see the layout adjust.
+          </Text>
+        </View>
+
         <ScrollView
-          style={{ flex: 1, marginTop: 20 }}
-          contentContainerStyle={{ paddingBottom: 20 }}
+          style={{ flex: 1, backgroundColor: '#FFF', borderRadius: 12, borderWidth: 1, borderColor: '#E2E8F0' }}
+          contentContainerStyle={{ padding: 15 }}
           keyboardShouldPersistTaps="handled"
+          showsVerticalScrollIndicator={false}
         >
-          <Text style={{ marginBottom: 10 }}>
-            This is some filler content to show movement.
-          </Text>
-          <Text style={{ marginBottom: 10 }}>
-            Line 1: Lorem ipsum dolor sit amet.
-          </Text>
-          <Text style={{ marginBottom: 10 }}>
-            Line 2: Consectetur adipiscing elit.
-          </Text>
-          <Text style={{ marginBottom: 10 }}>
-            Line 3: Sed do eiusmod tempor incididunt.
-          </Text>
-          <Text style={{ marginBottom: 10 }}>
-            Line 4: Ut labore et dolore magna aliqua.
-          </Text>
-          <Text style={{ marginBottom: 10 }}>
-            Line 5: Duis aute irure dolor in reprehenderit.
-          </Text>
+          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item) => (
+            <Text key={item} style={{ marginBottom: 15, color: '#475569' }}>
+              Filler Line {item}: This content will slide up to remain visible when the keyboard opens.
+            </Text>
+          ))}
         </ScrollView>
 
-        <View style={{ marginTop: 20 }}>
+        <View style={{ marginTop: 20, gap: 10 }}>
           <TextInput
-            style={styles.input}
-            placeholder="I'm the one that avoids the keyboard"
+            style={[styles.input, { backgroundColor: '#FFF' }]}
+            placeholder="Tap here to open keyboard..."
             value={text}
             onChangeText={setText}
+            placeholderTextColor="#94A3B8"
           />
-          <Text style={{ marginTop: 8 }}>You typed: {text}</Text>
+          <View style={{ padding: 10, backgroundColor: '#F1F5F9', borderRadius: 8 }}>
+            <Text style={{ fontSize: 12, color: '#64748B' }}>Live Output: {text || "..."}</Text>
+          </View>
         </View>
       </View>
     </KeyboardAvoidingView>
   );
 };
 
-
 export const KeyboardAvoidingViewOptionSyntax = () => {
-  const code = `import { KeyboardAvoidingView, Platform, ScrollView, Text, TextInput, View } from "react-native";
-import { useState } from "react";
+  const code = `import { KeyboardAvoidingView, Platform, TextInput, View } from "react-native";
 
 export default App = () => {
-  const [text, setText] = useState("");
-
   return (
     <KeyboardAvoidingView
+      style={{ flex: 1 }}
       behavior={Platform.OS === "ios" ? "padding" : "height"}
-      keyboardVerticalOffset={Platform.OS === "ios" ? 80 : 0}
+      keyboardVerticalOffset={100}
     >
-      <View>
-        <View>
-          <Text>
-            KeyboardAvoidingView Demo
-          </Text>
-          <Text>
-            Focus the bottom input and watch this area move up.
-          </Text>
-        </View>
-
-        <ScrollView>
-          <Text>This is some filler content to show movement.</Text>
-          <Text>Line 1</Text>
-          <Text>Line 2</Text>
-          <Text>Line 3</Text>
-          <Text>Line 4</Text>
-          <Text>Line 5</Text>
-        </ScrollView>
-        <View>
-          <TextInput}
-            placeholder="I'm the one that avoids the keyboard"
-            value={text}
-            onChangeText={setText}
-          />
-          <Text>You typed: {text}</Text>
-        </View>
+      <View style={{ flex: 1, justifyContent: 'flex-end', padding: 20 }}>
+        <TextInput 
+          placeholder="I avoid the keyboard" 
+          style={{ borderWidth: 1, padding: 15, borderRadius: 10 }}
+        />
       </View>
     </KeyboardAvoidingView>
   );
 };`;
 
   return (
-    <ScrollView>
-      <View style={{ justifyContent: "center", alignItems: "center", flex: 1 }}>
-        <Text style={styles.codeBlock}>{code}</Text>
-        <CopyBtn />
+    <ScrollView 
+      contentContainerStyle={{ padding: 20, alignItems: 'center' }}
+      showsVerticalScrollIndicator={false}
+    >
+      <View style={{ width: '100%' }}>
+        <Text style={[styles.codeBlock, { marginBottom: 20 }]}>{code}</Text>
+        <CopyBtn textToCopy={code} />
       </View>
     </ScrollView>
   );

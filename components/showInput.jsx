@@ -1,5 +1,12 @@
-import { useState } from "react";
-import { KeyboardAvoidingView, Platform, ScrollView, Text, TextInput, View } from "react-native";
+import React, { useState } from "react";
+import { 
+  KeyboardAvoidingView, 
+  Platform, 
+  ScrollView, 
+  Text, 
+  TextInput, 
+  View 
+} from "react-native";
 import styles from "../constants/GlobalStyles";
 import CopyBtn from "./CopyBtn";
 
@@ -8,194 +15,132 @@ export const TextInputOption = () => {
 
   return (
     <KeyboardAvoidingView
-      style={{ flex: 1 }}
+      style={{ flex: 1, backgroundColor: '#F8FAFC' }}
       behavior={Platform.OS === "ios" ? "padding" : "height"}
-      keyboardVerticalOffset={Platform.OS === "ios" ? 80 : 0} // tweak if header exists
+      keyboardVerticalOffset={Platform.OS === "ios" ? 100 : 0}
     >
       <ScrollView
-        contentContainerStyle={{ 
-          alignItems: "center",
-        }}
+        contentContainerStyle={{ padding: 20, alignItems: "center" }}
         keyboardShouldPersistTaps="handled"
+        showsVerticalScrollIndicator={false}
       >
-        <View style={{ width: "90%" }}>
+        <View style={{ width: "100%", gap: 12 }}>
+          <Text style={{ color: '#64748B', fontSize: 13, fontWeight: '700', marginBottom: 5 }}>INPUT VARIANTS</Text>
+          
           <TextInput
             style={styles.input}
-            placeholder="Type something using Placeholder..."
+            placeholder="Default Placeholder"
             value={text}
             onChangeText={setText}
           />
+          
           <TextInput
             style={styles.input}
-            placeholder="Type something using Placeholder with a new color..."
+            placeholder="Custom Placeholder Color"
             value={text}
             onChangeText={setText}
-            placeholderTextColor="#9d0000ff"
+            placeholderTextColor="#9d0000"
           />
+
           <TextInput
             style={styles.input}
+            placeholder="Custom Cursor Color"
             value={text}
             onChangeText={setText}
+            cursorColor="#ff5858"
           />
+
           <TextInput
             style={styles.input}
-            placeholder="Type something using AutoFill..."
-            value={text}
-            onChangeText={setText}
-          />
-          <TextInput
-            style={styles.input}
-            placeholder="Type something with red cursor..."
-            value={text}
-            onChangeText={setText}
-            cursorColor="#ff5858ff"
-          />
-          <TextInput
-            style={styles.input}
-            placeholder="Type something with numeric keyboard..."
+            placeholder="Numeric Keyboard"
             value={text}
             onChangeText={setText}
             keyboardType="numeric"
           />
+
           <TextInput
             style={styles.input}
-            placeholder="Type something with limited length of 4.."
+            placeholder="Max Length (4 chars)"
             value={text}
             onChangeText={setText}
             maxLength={4}
           />
+
           <TextInput
-            style={styles.input}
-            placeholder="Type something with Multiline enabled..."
-            value={text}
-            onChangeText={setText}
-            multiline
-          />
-          <TextInput
-            style={styles.input}
-            placeholder="Type something with Multiline enabled + number of lines..."
+            style={[styles.input, { height: 80, textAlignVertical: 'top' }]}
+            placeholder="Multiline Input"
             value={text}
             onChangeText={setText}
             multiline
             numberOfLines={3}
           />
+
           <TextInput
-            style={styles.input}
-            placeholder="Disabled Input..."
+            style={[styles.input, { backgroundColor: '#E2E8F0', color: '#94A3B8' }]}
+            placeholder="Disabled Input"
             value={text}
-            onChangeText={setText}
-            editable={false}   // use editable instead of readOnly
+            editable={false}
           />
+
           <TextInput
-            style={styles.input}
-            placeholder="Password Input and center align..."
+            style={[styles.input, { textAlign: 'center' }]}
+            placeholder="Secure Password Entry"
             value={text}
             onChangeText={setText}
             secureTextEntry
-            textAlign="center"
           />
-          <TextInput
-            style={styles.input}
-            placeholder="Type Input and Select the text..."
-            value={text}
-            onChangeText={setText}
-            selectionColor="#ffbabaff"
-          />
-          <Text style={{ marginTop: 10 }}>You typed: {text}</Text>
+
+          <View style={{ marginTop: 10, padding: 15, backgroundColor: '#FFF', borderRadius: 12, borderWidth: 1, borderColor: '#E2E8F0' }}>
+            <Text style={{ color: '#475569', fontWeight: '600' }}>Live Output:</Text>
+            <Text style={{ color: '#1E293B', marginTop: 4 }}>{text || "Start typing..."}</Text>
+          </View>
         </View>
       </ScrollView>
     </KeyboardAvoidingView>
   );
 };
+
 export const TextInputOptionSyntax = () => {
-    const code = `import { Text, TextInput, View } from "react-native";
-import { useState } from "react";
+  const code = `import React, { useState } from "react";
+import { TextInput, View, Text } from "react-native";
 
 export default App = () => {
-  const [text, setText] = useState("");
+  const [value, setValue] = useState("");
+
   return (
-    <View style={{ padding: 20 }}>
+    <View style={{ padding: 20, gap: 10 }}>
       <TextInput
-        placeholder="Type something using Placeholder..."
-        value={text}
-        onChangeText={setText}
+        style={{ borderWidth: 1, padding: 10, borderRadius: 8 }}
+        placeholder="Standard Input"
+        onChangeText={setValue}
+        value={value}
       />
+
       <TextInput
-        placeholder="Type something using Placeholder with a new color..."
-        value={text}
-        onChangeText={setText}
-        placeholderTextColor="#9d0000ff"
+        style={{ borderWidth: 1, padding: 10, borderRadius: 8 }}
+        placeholder="Password"
+        secureTextEntry={true}
       />
+
       <TextInput
-        value={text}
-        onChangeText={setText}
-      />
-      <TextInput
-        placeholder="Type something using AutoFill..."
-        value={text}
-        onChangeText={setText}
-      />
-      <TextInput
-        placeholder="Type something with red cursor..."
-        value={text}
-        onChangeText={setText}
-        cursorColor="#ff5858ff"
-      />
-      <TextInput
-        placeholder="Type something with numeric keyboard..."
-        value={text}
-        onChangeText={setText}
         keyboardType="numeric"
+        placeholder="Numbers only"
       />
-      <TextInput
-        placeholder="Type something with limited length of 4.."
-        value={text}
-        onChangeText={setText}
-        maxLength={4}
-      />
-      <TextInput
-        placeholder="Type something with Multiline enabled..."
-        value={text}
-        onChangeText={setText}
-        multiline
-      />
-      <TextInput
-        placeholder="Type something with Multiline enabled + number of lines..."
-        value={text}
-        onChangeText={setText}
-        multiline
-        numberOfLines={3}
-      />
-      <TextInput
-        placeholder="Disabled Input..."
-        value={text}
-        onChangeText={setText}
-        editable={false}   // use editable instead of readOnly
-      />
-      <TextInput
-        placeholder="Password Input and center align..."
-        value={text}
-        onChangeText={setText}
-        secureTextEntry
-        textAlign="center"
-      />
-      <TextInput
-        placeholder="Type Input and Select the text..."
-        value={text}
-        onChangeText={setText}
-        selectionColor="#ffbabaff"
-      />
+
+      <Text>You typed: {value}</Text>
     </View>
   );
 };`;
 
-    return (
-        <ScrollView>
-            <View style={{ justifyContent: 'center', alignItems: 'center',  flex: 1 }}>
-                <Text style={styles.codeBlock}>{code}</Text>
-                <CopyBtn />
-            </View>
-        </ScrollView>
-    );
+  return (
+    <ScrollView 
+      contentContainerStyle={{ padding: 20, alignItems: 'center' }}
+      showsVerticalScrollIndicator={false}
+    >
+      <View style={{ width: '100%' }}>
+        <Text style={[styles.codeBlock, { marginBottom: 20 }]}>{code}</Text>
+        <CopyBtn textToCopy={code} />
+      </View>
+    </ScrollView>
+  );
 };
-
