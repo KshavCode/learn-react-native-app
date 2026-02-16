@@ -1,8 +1,9 @@
+import React from "react";
 import {
-    ImageBackground,
-    ScrollView,
-    Text,
-    View
+  ImageBackground,
+  ScrollView,
+  Text,
+  View,
 } from "react-native";
 import styles from "../constants/GlobalStyles";
 import CopyBtn from "./CopyBtn";
@@ -18,9 +19,10 @@ export const ImageBackgroundOption = () => {
         alignItems: "center",
         paddingVertical: 20,
       }}
-      keyboardShouldPersistTaps="handled"
+      showsVerticalScrollIndicator={false}
     >
-      <View style={{ width: "90%", gap: 16 }}>
+      <View style={{ width: "90%", gap: 20 }}>
+        {/* Basic Example */}
         <ImageBackground
           source={demoImage}
           style={{
@@ -29,12 +31,14 @@ export const ImageBackgroundOption = () => {
             alignItems: "center",
           }}
         >
-          <Text style={{ color: "#fff", fontWeight: "bold", fontSize: 16 }}>
-            Basic ImageBackground
-          </Text>
+          <View style={{ backgroundColor: 'rgba(0,0,0,0.4)', padding: 10, borderRadius: 5 }}>
+            <Text style={{ color: "#fff", fontWeight: "bold", fontSize: 16 }}>
+              Basic ImageBackground
+            </Text>
+          </View>
         </ImageBackground>
 
-        {/* With blurRadius */}
+        {/* Blur Example */}
         <ImageBackground
           source={demoImage}
           style={{
@@ -42,65 +46,62 @@ export const ImageBackgroundOption = () => {
             justifyContent: "center",
             alignItems: "center",
           }}
-          blurRadius={5}
+          blurRadius={10}
         >
           <Text style={{ color: "#fff", fontWeight: "bold", fontSize: 16 }}>
-            Blur Radius: 5
+            Blur Radius: 10
           </Text>
         </ImageBackground>
 
-        {/* With borderRadius using imageStyle */}
+        {/* Rounded Corners Example */}
         <ImageBackground
           source={demoImage}
           style={{
             height: 150,
             justifyContent: "center",
             alignItems: "center",
-            borderRadius: 16,
-            overflow: "hidden",
           }}
-          imageStyle={{ borderRadius: 16 }}
+          imageStyle={{ borderRadius: 20 }}
         >
-          <Text style={{ color: "#fff", fontWeight: "bold", fontSize: 16 }}>
-            Rounded Corners
-          </Text>
+          <View style={{ backgroundColor: 'rgba(0,0,0,0.5)', paddingHorizontal: 15, paddingVertical: 8, borderRadius: 20 }}>
+            <Text style={{ color: "#fff", fontWeight: "bold", fontSize: 16 }}>
+              Rounded Corners
+            </Text>
+          </View>
         </ImageBackground>
-
       </View>
     </ScrollView>
   );
 };
 
 export const ImageBackgroundOptionSyntax = () => {
-  const code = `import { ImageBackground, ScrollView, Text, View } from "react-native";
+  const code = `import { ImageBackground, Text, View } from "react-native";
 
-const demoImage = "link_to_your_image"
+const image = { uri: "https://reactjs.org/logo-og.png" };
 
-export default App = () => {
-  return (
-    <ScrollView>
-      <View>
-        <ImageBackground source={demoImage}>
-          <Text>Basic ImageBackground</Text>
-        </ImageBackground>
-
-        <ImageBackground source={demoImage} blurRadius={5}>
-          <Text>Blur Radius: 5</Text>
-        </ImageBackground>
-
-        <ImageBackground source={demoImage} imageStyle={{ borderRadius: 16 }}>
-          <Text>Rounded Corners</Text>
-        </ImageBackground>
-      </View>
-    </ScrollView>
-  );
-};`;
+export default App = () => (
+  <View style={{ flex: 1 }}>
+    <ImageBackground 
+      source={image} 
+      resizeMode="cover" 
+      style={{ flex: 1, justifyContent: "center" }}
+      imageStyle={{ borderRadius: 20 }}
+    >
+      <Text style={{ color: "white", textAlign: "center" }}>
+        Inside Content
+      </Text>
+    </ImageBackground>
+  </View>
+);`;
 
   return (
-    <ScrollView>
-      <View style={{ justifyContent: "center", alignItems: "center", flex: 1 }}>
-        <Text style={styles.codeBlock}>{code}</Text>
-        <CopyBtn />
+    <ScrollView 
+      contentContainerStyle={{ padding: 20, alignItems: 'center' }}
+      showsVerticalScrollIndicator={false}
+    >
+      <View style={{ width: '100%' }}>
+        <Text style={[styles.codeBlock, { marginBottom: 20 }]}>{code}</Text>
+        <CopyBtn textToCopy={code} />
       </View>
     </ScrollView>
   );

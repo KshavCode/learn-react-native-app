@@ -1,3 +1,4 @@
+import React from "react";
 import { ActivityIndicator, ScrollView, Text, View } from "react-native";
 import styles from "../constants/GlobalStyles";
 import CopyBtn from "./CopyBtn";
@@ -34,6 +35,7 @@ export const ActivityIndicatorOption = () => {
     </ScrollView>
   );
 };
+
 export const ActivityIndicatorOptionSyntax = () => {
   const code = `import { ActivityIndicator, Text, View } from "react-native";
 
@@ -49,10 +51,18 @@ export default App = () => {
 };`;
 
   return (
-    <ScrollView>
-      <View style={{ justifyContent: "center", alignItems: "center", flex: 1 }}>
+    <ScrollView 
+      contentContainerStyle={{ 
+        justifyContent: "center", 
+        alignItems: "center", 
+        paddingVertical: 20 
+      }}
+    >
+      <View style={{ width: "90%" }}>
         <Text style={styles.codeBlock}>{code}</Text>
-        <CopyBtn />
+        
+        {/* The Fix: Passed the 'code' variable instead of the component name */}
+        <CopyBtn textToCopy={code} />
       </View>
     </ScrollView>
   );
