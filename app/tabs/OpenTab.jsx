@@ -1,11 +1,20 @@
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { Text } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { AlertOption, AlertOptionSyntax } from "../../components/Alert";
-import { TouchableWithoutFeedbackOption, TouchableWithoutFeedbackOptionSyntax } from "../../components/Feedback";
-import { TouchableHighlightOption, TouchableHighlightOptionSyntax } from "../../components/Highlight";
-import { TextInputOption, TextInputOptionSyntax } from '../../components/Input';
-import { TouchableOpacityOption, TouchableOpacityOptionSyntax } from "../../components/Opacity";
+import { ActivityIndicatorOption, ActivityIndicatorOptionSyntax } from "../../components/showActivityIndicator";
+import { AlertOption, AlertOptionSyntax } from "../../components/showAlert";
+import { ButtonOption, ButtonOptionSyntax } from "../../components/showButton";
+import { TouchableWithoutFeedbackOption, TouchableWithoutFeedbackOptionSyntax } from "../../components/showFeedback";
+import { FlatListOption, FlatListOptionSyntax } from "../../components/showFlatList";
+import { TouchableHighlightOption, TouchableHighlightOptionSyntax } from "../../components/showHighlight";
+import { ImageOption, ImageOptionSyntax } from "../../components/showImage";
+import { ImageBackgroundOption, ImageBackgroundOptionSyntax } from "../../components/showImageBackground";
+import { TextInputOption, TextInputOptionSyntax } from '../../components/showInput';
+import { KeyboardAvoidingViewOption, KeyboardAvoidingViewOptionSyntax } from "../../components/showKeyboard";
+import { ModalOption, ModalOptionSyntax } from "../../components/showModal";
+import { TouchableOpacityOption, TouchableOpacityOptionSyntax } from "../../components/showOpacity";
+import { ScrollViewOption, ScrollViewOptionSyntax } from "../../components/showScrollView";
+import { SwitchOption, SwitchOptionSyntax } from "../../components/showSwitch";
 import styles from "../../constants/GlobalStyles";
 
 const Tab = createMaterialTopTabNavigator();
@@ -14,6 +23,27 @@ function ExampleScreen({name}) {
     return (
       <SafeAreaView style={[styles.container, {paddingTop: 0}]}> 
         <AlertOption/>
+      </SafeAreaView>
+    )
+  }
+  else if (name==="Button") {
+    return (
+      <SafeAreaView style={[styles.container, {paddingTop: 0}]}> 
+        <ButtonOption/>
+      </SafeAreaView>
+    )
+  }
+  else if (name==="Switch") {
+    return (
+      <SafeAreaView style={[styles.container, {paddingTop: 0}]}> 
+        <SwitchOption/>
+      </SafeAreaView>
+    )
+  }
+  else if (name==="Image") {
+    return (
+      <SafeAreaView style={[styles.container, {paddingTop: 0}]}> 
+        <ImageOption/>
       </SafeAreaView>
     )
   }
@@ -45,6 +75,48 @@ function ExampleScreen({name}) {
       </SafeAreaView>
     )
   }
+  else if (name==="ImageBackground") {
+    return (
+      <SafeAreaView style={[styles.container, {paddingTop: 0}]}>
+        <ImageBackgroundOption/>
+      </SafeAreaView>
+    )
+  }
+  else if (name==="KeyboardAvoidingView") {
+    return (
+      <SafeAreaView style={[styles.container, {paddingTop: 0}]}>
+        <KeyboardAvoidingViewOption/>
+      </SafeAreaView>
+    )
+  }
+  else if (name==="FlatList") {
+    return (
+      <SafeAreaView style={[styles.container, {paddingTop: 0}]}>
+        <FlatListOption/>
+      </SafeAreaView>
+    )
+  }
+  else if (name==="ActivityIndicator") {
+    return (
+      <SafeAreaView style={[styles.container, {paddingTop: 0}]}>
+        <ActivityIndicatorOption/>
+      </SafeAreaView>
+    )
+  }
+  else if (name==="Modal") {
+    return (
+      <SafeAreaView style={[styles.container, {paddingTop: 0}]}>
+        <ModalOption/>
+      </SafeAreaView>
+    )
+  }
+  else if (name==="ScrollView") {
+    return (
+      <SafeAreaView style={[styles.container, {paddingTop: 0}]}>
+        <ScrollViewOption/>
+      </SafeAreaView>
+    )
+  }
   else {
     return (
       <SafeAreaView style={[styles.container, {paddingTop: 0}]}> 
@@ -59,6 +131,27 @@ function SourceCodeScreen({name}) {
     return (
       <SafeAreaView style={[styles.container, {paddingTop: 0}]}> 
         <AlertOptionSyntax/>
+      </SafeAreaView>
+    )
+  }
+  else if (name==="Button") {
+    return (
+      <SafeAreaView style={[styles.container, {paddingTop: 0}]}> 
+        <ButtonOptionSyntax/>
+      </SafeAreaView>
+    )
+  }
+  else if (name==="Switch") {
+    return (
+      <SafeAreaView style={[styles.container, {paddingTop: 0}]}> 
+        <SwitchOptionSyntax/>
+      </SafeAreaView>
+    )
+  }
+  else if (name==="Image") {
+    return (
+      <SafeAreaView style={[styles.container, {paddingTop: 0}]}> 
+        <ImageOptionSyntax/>
       </SafeAreaView>
     )
   }
@@ -90,9 +183,51 @@ function SourceCodeScreen({name}) {
       </SafeAreaView>
     )
   }
+  else if (name==="ImageBackground") {
+    return (
+      <SafeAreaView style={[styles.container, {paddingTop: 0}]}>
+        <ImageBackgroundOptionSyntax/>
+      </SafeAreaView>
+    )
+  }
+  else if (name==="KeyboardAvoidingView") {
+    return (
+      <SafeAreaView style={[styles.container, {paddingTop: 0}]}>
+        <KeyboardAvoidingViewOptionSyntax/>
+      </SafeAreaView>
+    )
+  }
+  else if (name==="FlatList") {
+    return (
+      <SafeAreaView style={[styles.container, {paddingTop: 0}]}>
+        <FlatListOptionSyntax/>
+      </SafeAreaView>
+    )
+  }
+  else if (name==="ActivityIndicator") {
+    return (
+      <SafeAreaView style={[styles.container, {paddingTop: 0}]}>
+        <ActivityIndicatorOptionSyntax/>
+      </SafeAreaView>
+    )
+  }
+  else if (name==="Modal") {
+    return (
+      <SafeAreaView style={[styles.container, {paddingTop: 0}]}>
+        <ModalOptionSyntax/>
+      </SafeAreaView>
+    )
+  }
+  else if (name==="ScrollView") {
+    return (
+      <SafeAreaView style={[styles.container, {paddingTop: 0}]}>
+        <ScrollViewOptionSyntax/>
+      </SafeAreaView>
+    )
+  }
   else {
     return (
-      <SafeAreaView style={styles.container}> 
+      <SafeAreaView style={[styles.container]}> 
           <Text style={styles.exampleText}>Source Code</Text>
       </SafeAreaView>
     );
@@ -114,5 +249,3 @@ const OpenTab = ({name}) => {
 }
 
 export default OpenTab;
-
-// https://www.npmjs.com/package/@rivascva/react-native-code-editor for code editor
